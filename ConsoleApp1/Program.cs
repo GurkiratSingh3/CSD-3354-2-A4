@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,16 +18,16 @@ namespace ConsoleApp1
         }
         static async void Download()
         {
-            await Network.Download();
-            Console.WriteLine("Download Complete");
+            HttpClient client = new HttpClient();
+            var data = await client.GetStringAsync("http://rouxacademy.com");
+            Console.WriteLine("Download Complete" +data);
         }
     }
     class Network
     {
         static public Task Download()
         {
-            return Task.Run(() => {
-            });
+            return Task.Run(() =>  Thread.Sleep(3000));
         }
     }
 
