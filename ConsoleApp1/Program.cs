@@ -7,28 +7,28 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
-{   
+{
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Downloading File......");
+            Console.WriteLine("downloading file");
             Download();
             Console.ReadLine();
         }
-        static async void Download()
+        static void Download()
         {
-            HttpClient client = new HttpClient();
-            var data = await client.GetStringAsync("http://rouxacademy.com");
-            Console.WriteLine("Download Complete" +data);
+            Network.Download((message) => Console.WriteLine("Download complete " + message));
         }
     }
+    // Imaginary external network library
     class Network
-    {
-        static public Task Download()
+    {  static public void Download(Action<String> callback)
         {
-            return Task.Run(() =>  Thread.Sleep(3000));
+            Task.Run(() => {
+                Thread.Sleep(3000);
+                callback("completed");
+            });
         }
     }
-
 }
