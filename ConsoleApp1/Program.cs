@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -10,8 +11,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            // Robindeep Singh (C0723381)
-            // Gurkirat Singh (C0731779)
+            Console.WriteLine("Downloading File......");
+            Download();
+            Console.ReadLine();
+        }
+        static void Download()
+        {
+            Task.Run(() =>{
+                Thread.Sleep(3000);
+                Console.WriteLine("Download Complete");
+            });
         }
     }
 }
