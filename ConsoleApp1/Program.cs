@@ -21,6 +21,7 @@ namespace ConsoleApp1
            health -= r.Next(5, 50);
        }
     }
+
     class Program
     {
         static void Main(string[] args)
